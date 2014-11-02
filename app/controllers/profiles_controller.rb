@@ -3,16 +3,22 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all
-    respond_with(@profiles)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
-    respond_with(@profile)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def new
     @profile = Profile.new
-    respond_with(@profile)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def edit
@@ -20,18 +26,23 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    @profile.save
-    respond_with(@profile)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def update
     @profile.update(profile_params)
-    respond_with(@profile)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def destroy
     @profile.destroy
-    respond_with(@profile)
+    respond_to do |format|
+      format.html
+    end
   end
 
   private

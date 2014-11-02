@@ -26,7 +26,11 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    autoprefixer-rails (3.1.2.20141016)
+      execjs
     bcrypt (3.1.9)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.1.4)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -44,6 +48,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.2)
+    font-awesome-sass (4.2.2)
+      sass (~> 3.2)
     hike (1.2.3)
     i18n (0.6.11)
     jbuilder (1.5.3)
@@ -115,8 +121,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
+  bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
   devise
+  font-awesome-sass (~> 4.2.0)
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
