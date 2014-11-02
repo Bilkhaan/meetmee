@@ -2,11 +2,13 @@ Meetmee::Application.routes.draw do
   resources :profiles
 
   devise_for :users
+  resources :home
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'profiles#index'
+  root 'home#dashboard'
+  get '/people/:id' => 'home#dashboard'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
