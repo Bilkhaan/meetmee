@@ -3,16 +3,23 @@ class PortfoliosController < ApplicationController
 
   def index
     @portfolios = Portfolio.all
-    respond_with(@portfolios)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
     respond_with(@portfolio)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def new
     @portfolio = Portfolio.new
-    respond_with(@portfolio)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def edit
@@ -20,18 +27,27 @@ class PortfoliosController < ApplicationController
 
   def create
     @portfolio = Portfolio.new(portfolio_params)
-    @portfolio.save
-    respond_with(@portfolio)
+    if @portfolio.save
+      format.html { redirect_to @guess, notice: 'Can You Guess was successfully updated.' }
+      format.json { head :no_content }
+    else
+      format.html { render action: 'edit' }
+      format.json { render json: @guess.errors, status: :unprocessable_entity }
+    end
   end
 
   def update
     @portfolio.update(portfolio_params)
-    respond_with(@portfolio)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def destroy
     @portfolio.destroy
-    respond_with(@portfolio)
+    respond_to do |format|
+      format.html
+    end
   end
 
   private
