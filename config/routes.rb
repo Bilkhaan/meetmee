@@ -1,4 +1,6 @@
 Meetmee::Application.routes.draw do
+  resources :portfolios
+
   resources :profiles
 
   devise_for :users
