@@ -15,24 +15,26 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">Contact</a>
-                    </li>
+                    <% unless from == "loginForm"%>
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#portfolio">Portfolio</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Contact</a>
+                        </li>
+                    <% end %>
                     <li class="page-scroll">
                        <%= link_to "Login", new_user_session_path() unless current_user.present? %>
                        <%= link_to "Log-out", destroy_user_session_path(), method: "delete" if current_user.present? %>
                     </li>
                     <li class="page-scroll">
-                        <a href="#">Join</a>
+                        <%= link_to "Join", new_user_registration_path() unless current_user.present? %>
                     </li>
                 </ul>
             </div>

@@ -1,5 +1,5 @@
-<%= render :partial => 'layouts/header' %>
-<div class="container clearfix">
+<%= render partial: 'layouts/header', locals: {from: "loginForm"} %>
+<div class="container clearfix margin-container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
