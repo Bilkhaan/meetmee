@@ -1,26 +1,29 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<%= render :partial => 'layouts/header' %>
+<div class="container clearfix">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <div class="row">
+          <div class="col-md-7 col-ms-12 col-xs-12">
+            <%= f.email_field :email, autofocus: true, class: "form-control col-md-7 col-ms-12 col-xs-12", placeholder: "Email address", required: true %>
+          </div>
+        </div>
+        <div class="row">
+           <div class="col-md-7 col-ms-12 col-xs-12">
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password", required: true %>
+            </div>
+        </div>
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :remember_me %> Remember me
+          </label>
+        </div>
+         <%= f.submit "Sign in", class: "btn btn-primary" %>
+      <% end %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  </div> <!-- /container -->
+</div>
+<%#render "devise/shared/links" %>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

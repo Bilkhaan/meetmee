@@ -27,6 +27,13 @@
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
                     </li>
+                    <li class="page-scroll">
+                       <%= link_to "Login", new_user_session_path() unless current_user.present? %>
+                       <%= link_to "Log-out", destroy_user_session_path(), method: "delete" if current_user.present? %>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#">Join</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
