@@ -35,6 +35,7 @@
                     </li>
                     <li class="page-scroll">
                         <%= link_to "Join", new_user_registration_path() unless current_user.present? %>
+                        <%= link_to "edit", new_user_registration_path() if current_user.present? %>
                     </li>
                 </ul>
             </div>
