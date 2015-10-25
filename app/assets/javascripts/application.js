@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require jquery.turbolinks
+//= require jquery_nested_form
 //= require bootstrap-sprockets
+//= require cloudinary
+// require cloudinary/processing
 //= require_tree .
+// require turbolinks

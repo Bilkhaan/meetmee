@@ -11,7 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102055114) do
+ActiveRecord::Schema.define(version: 20151025092622) do
+
+  create_table "contact_mes", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone_no"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", force: true do |t|
+    t.string   "photo"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
+
+  create_table "portfolios", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "image_url"
+    t.string   "client"
+    t.string   "services"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "end_date"
+    t.datetime "start_date"
+    t.integer  "profile_id"
+  end
 
   create_table "profiles", force: true do |t|
     t.string   "name"
@@ -20,6 +52,11 @@ ActiveRecord::Schema.define(version: 20141102055114) do
     t.text     "education"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_name"
+    t.integer  "user_id"
+    t.string   "image_url"
+    t.string   "location"
+    t.string   "email_address"
   end
 
   create_table "users", force: true do |t|

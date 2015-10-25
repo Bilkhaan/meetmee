@@ -1,37 +1,63 @@
-<%= form_for(@portfolio) do |f| %>
-  <% if @portfolio.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+<div class="paddbtm" id="portfolio-form">
+  <%= nested_form_for([@profile, @portfolio]) do |f| %>
+    <% if @portfolio.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
 
-      <ul>
-      <% @portfolio.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <ul>
+        <% @portfolio.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row paddtop form-group">
+      <div class="col-md-7 col-ms-12 col-xs-12">
+        <div class="form_controls">
+          <div class="preview">
+            <%= image_tag portfolio_image(@portfolio), class: 'portfolio-pic' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= f.fields_for :image  do |image_form| %>
+        <div class="col-md-7 col-ms-12 col-xs-12">
+          <%= image_form.cl_image_upload(:photo) %>
+        <span class="status"></span>
+        </div>
       <% end %>
-      </ul>
+    </div>
+
+    <div class="row form-group paddtop">
+      <div class="col-md-7 col-ms-12 col-xs-12">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-7 col-ms-12 col-xs-12">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-7 col-ms-12 col-xs-12">
+        <%= f.label :client %><br>
+        <%= f.text_field :client, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-7 col-ms-12 col-xs-12">
+        <%= f.label :services %><br>
+        <%= f.text_field :services, class: "form-control" %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
-  </div>
-  <div class="field">
-    <%= f.label :client %><br>
-    <%= f.text_field :client %>
-  </div>
-  <div class="field">
-    <%= f.label :services %><br>
-    <%= f.text_field :services %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+<%= cloudinary_js_config %>

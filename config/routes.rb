@@ -1,7 +1,11 @@
 Meetmee::Application.routes.draw do
-  resources :portfolios
 
-  resources :profiles
+  resources :profiles do
+    resources :images
+    resources :portfolios do
+      resources :images
+    end
+  end
 
   devise_for :users
   resources :home
@@ -10,7 +14,7 @@ Meetmee::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#dashboard'
-  get '/people/:id' => 'home#dashboard'
+  get '/people/:id' => 'home#dashboard', as: "dashboard_home"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

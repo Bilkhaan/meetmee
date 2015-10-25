@@ -29,6 +29,9 @@
 
 <body id="page-top" class="index">
   <%= render :partial => 'layouts/messages' %>
-  <%= yield %>
+  <%= render partial: 'layouts/header', locals: {from: set_referrer(params)} %>
+  <div class="<%= apply_container_class(params) %> paddtop">
+    <%= yield %>
+  </div>
 </body>
 </html>

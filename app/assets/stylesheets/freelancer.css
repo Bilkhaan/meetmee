@@ -22,7 +22,7 @@ a:focus,
 a:active,
 a.active {
     outline: 0;
-    color: #18bc9c;
+    color: #2c3e50;
 }
 
 h1,
@@ -63,7 +63,7 @@ hr.star-light {
 
 hr.star-light:after {
     color: #fff;
-    background-color: #18bc9c;
+    background-color: #2c3e50;
 }
 
 hr.star-primary {
@@ -82,7 +82,7 @@ hr.star-primary:after {
 header {
     text-align: center;
     color: #fff;
-    background: #18bc9c;
+    background: #2c3e50;
 }
 
 header .container {
@@ -181,7 +181,7 @@ section h2 {
 
 section.success {
     color: #fff;
-    background: #18bc9c;
+    background: #2c3e50;
 }
 
 @media(max-width:767px) {
@@ -265,7 +265,7 @@ section.success {
 .btn-outline:active,
 .btn-outline.active {
     border: solid 2px #fff;
-    color: #18bc9c;
+    color: #2c3e50;
     background: #fff;
 }
 
@@ -318,7 +318,7 @@ section.success {
 }
 
 .floating-label-form-group-with-focus label {
-    color: #18bc9c;
+    color: #2c3e50;
 }
 
 form .row:first-child .floating-label-form-group {
@@ -451,5 +451,29 @@ footer .footer-below {
      -moz-border-radius: 50%;
 }
 .margin-container {
-    margin-top: 90px;
+    margin-top: 20px;
+}
+.paddtop {
+    padding-top: 20px;
+}
+.profile-pic {
+    width: 200px;
+    height: 200px;
+}
+.paddbtm {
+    padding-bottom: 20px;
+}
+.portfolio-add {
+  font-size: 29px;
+  font-weight: bold;
+}
+.portfolio-add a:hover {
+  color: #2AAF95;
+}
+.portfolio-add a {
+  text-decoration: none;
+}
+.portfolio-pic {
+  width: 300px;
+  height: 300px;
 }

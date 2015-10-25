@@ -1,33 +1,79 @@
-<%= form_for(@profile) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<div class="container clearfix margin-container paddbtm">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col">
+      <%= nested_form_for(@profile) do |f| %>
+        <% if @profile.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-      <ul>
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <ul>
+            <% @profile.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="row paddtop form-group">
+          <div class="col-md-7 col-ms-12 col-xs-12">
+            <div class="form_controls">
+              <div class="preview">
+                <%= image_tag avatar_image(@profile), class: 'profile-pic' %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <%= f.fields_for :image  do |image_form| %>
+            <div class="col-md-7 col-ms-12 col-xs-12">
+              <%= image_form.cl_image_upload(:photo) %>
+            <span class="status"></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="row form-group paddtop">
+          <div class="col-md-7 col-ms-12 col-xs-12">
+            <%= f.label :name %><br>
+            <%= f.text_field :name, class: "form-control", placeholder: "User Name", required: true  %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-7 col-ms-12 col-xs-12">
+            <%= f.label :about_me %><br>
+            <%= f.text_area :about_me, class: "form-control", placeholder: "About Me", required: true   %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-7 col-ms-12 col-xs-12">
+            <%= f.label :age %><br>
+            <%= f.number_field :age, class: "form-control", placeholder: "Age", required: true   %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-7 col-ms-12 col-xs-12">
+            <%= f.label :education %><br>
+            <%= f.text_area :education, class: "form-control", placeholder: "Education", required: true   %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-7 col-ms-12 col-xs-12">
+            <%= f.label :user_name %><br>
+            <%= f.text_field :user_name, class: "form-control", placeholder: "User Name", required: true   %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-7 col-ms-12 col-xs-12">
+            <%= f.label :location %><br>
+            <%= f.text_field :location, class: "form-control", placeholder: "location", required: true   %>
+          </div>
+        </div>
+        <div class="actions paddtop">
+          <%= f.submit 'Update Profile', class: "btn btn-primary" %>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :about_me %><br>
-    <%= f.text_area :about_me %>
-  </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
-  </div>
-  <div class="field">
-    <%= f.label :education %><br>
-    <%= f.text_area :education %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+<%= cloudinary_js_config %>

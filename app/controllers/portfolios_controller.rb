@@ -1,6 +1,6 @@
 class PortfoliosController < ApplicationController
-  before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_profile, only: [:new, :create, :edit, :update]
+  before_action :set_portfolio, except: [:index, :new, :create]
   def index
     @portfolios = Portfolio.all
     respond_to do |format|
@@ -17,6 +17,7 @@ class PortfoliosController < ApplicationController
 
   def new
     @portfolio = Portfolio.new
+    @image = @portfolio.image || @portfolio.build_image
     respond_to do |format|
       format.html
     end
@@ -26,13 +27,15 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    @portfolio = Portfolio.new(portfolio_params)
-    if @portfolio.save
-      format.html { redirect_to @guess, notice: 'Can You Guess was successfully updated.' }
-      format.json { head :no_content }
-    else
-      format.html { render action: 'edit' }
-      format.json { render json: @guess.errors, status: :unprocessable_entity }
+    @portfolio = @profile.portfolios.new(portfolio_params)
+    respond_to do |format|
+      if @portfolio.save
+        format.html { redirect_to root_path, notice: 'Portfolio was created.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -55,7 +58,11 @@ class PortfoliosController < ApplicationController
       @portfolio = Portfolio.find(params[:id])
     end
 
+    def set_profile
+      @profile = Profile.find_by_id(params[:profile_id])
+    end
+
     def portfolio_params
-      params.require(:portfolio).permit(:title, :description, :image_url, :client, :services)
+      params.require(:portfolio).permit(:title, :description, :image_url, :client, :services, image_attributes: [:photo])
     end
 end

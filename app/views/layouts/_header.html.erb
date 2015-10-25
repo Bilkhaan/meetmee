@@ -15,7 +15,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <% unless from == "loginForm"%>
+                    <% unless from == "loginForm" || from == "edit" %>
                         <li class="hidden">
                             <a href="#page-top"></a>
                         </li>
@@ -30,12 +30,13 @@
                         </li>
                     <% end %>
                     <li class="page-scroll">
-                       <%= link_to "Login", new_user_session_path() unless current_user.present? %>
+                       <%= link_to "Login", new_user_session_path() unless current_user.present? || from == "edit" %>
                        <%= link_to "Log-out", destroy_user_session_path(), method: "delete" if current_user.present? %>
                     </li>
                     <li class="page-scroll">
-                        <%= link_to "Join", new_user_registration_path() unless current_user.present? %>
-                        <%= link_to "edit", new_user_registration_path() if current_user.present? %>
+                        <%= link_to "Join", new_user_registration_path() unless current_user.present? || from == "edit" %>
+                        <%= link_to "edit", edit_profile_path(current_user.profile) if current_user.present? && from != "edit" %>
+                        <%= link_to "Me", root_url if from == "edit" %>
                     </li>
                 </ul>
             </div>
@@ -43,4 +44,3 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-

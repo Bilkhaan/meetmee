@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: bilkhan
+  api_key: '517563125418317'
+  api_secret: X-t4SnG7GcwgS4ofmZDkHf7xAas
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: bilkhan
+  api_key: '517563125418317'
+  api_secret: X-t4SnG7GcwgS4ofmZDkHf7xAas
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: bilkhan
+  api_key: '517563125418317'
+  api_secret: X-t4SnG7GcwgS4ofmZDkHf7xAas
+  enhance_image_tag: true
+  static_image_support: false
