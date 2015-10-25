@@ -29,6 +29,7 @@ gem 'font-awesome-sass', '~> 4.2.0'
 gem 'carrierwave'
 gem 'cloudinary'
 gem "nested_form"
+gem 'pg'
 
 group :development do
   gem 'pry'
