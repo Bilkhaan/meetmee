@@ -12,5 +12,6 @@ class HomeController < ApplicationController
     def set_profile
       name = params[:id] ? params[:id] : current_user.user_name
       @profile = Profile.find_by_user_name(name)
+      redirect_to new_profile_path if @profile.blank?
     end
 end
