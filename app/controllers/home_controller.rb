@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_profile, only: [:dashboard]
 
   def dashboard
@@ -9,7 +10,7 @@ class HomeController < ApplicationController
 
   private
     def set_profile
-      name = params[:id] ? params[:id] : 'bilkhan'
+      name = params[:id] ? params[:id] : current_user.profile.user_name
       @profile = Profile.find_by_user_name(name)
     end
 end
