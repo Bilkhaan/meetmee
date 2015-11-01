@@ -10,7 +10,7 @@ class HomeController < ApplicationController
 
   private
     def set_profile
-      name = params[:id] ? params[:id] : current_user.profile.user_name
+      name = params[:id] ? params[:id] : current_user.user_name
       @profile = Profile.find_by_user_name(name)
     end
 end
