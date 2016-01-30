@@ -1,8 +1,8 @@
 class PortfoliosController < ApplicationController
-  before_action :set_profile, only: [:new, :create, :edit, :update]
+  before_action :set_profile, only: [:index, :new, :create, :edit, :update]
   before_action :set_portfolio, except: [:index, :new, :create]
   def index
-    @portfolios = Portfolio.all
+    @portfolios = @profile.portfolios
     respond_to do |format|
       format.html
     end

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   after_create :initiate_profile
 
   def user_name
-    self.profile.present? ? self.profile.user_name : 'bilkhan'
+    self.profile.user_name if self.profile.present?
   end
 
   private

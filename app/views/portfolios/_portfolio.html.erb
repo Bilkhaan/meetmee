@@ -1,73 +1,77 @@
-<!-- Portfolio Grid Section -->
-<section id="portfolio">
-  <div></div>
+  <!-- Portfolio Grid Section -->
+  <section id="portfolio">
+    <div></div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2>Portfolio</h2>
-                <hr class="star-primary">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>Portfolio</h2>
+          <hr class="star-primary">
+        </div>
+      </div>
+      <div class="row">
+        <% portfolios = @profile.portfolios %>
+        <% if portfolios.present? %>
+          <% portfolios.each do |portfolio| %>
+            <div class="col-sm-4 portfolio-item">
+              <a href="#portfolioModal<%= portfolio.id %>" class="portfolio-link" data-toggle="modal" onClick="setTimeout(function(){$('.modal-backdrop').remove();}, 300)">
+                <div class="caption">
+                  <div class="caption-content">
+                    <i class="fa fa-search-plus fa-3x"></i>
+                  </div>
+                </div>
+                <%= image_tag portfolio_image(portfolio), class: "img-responsive" %>
+              </a>
             </div>
+          <% end %>
+        <% else %>
+        <div class='text-center'>
+          <h4>There is currently no portfolio</h4>
         </div>
-        <div class="row">
-            <% portfolios = @profile.portfolios %>
-            <% if portfolios.present? %>
-                <% portfolios.each do |portfolio| %>
-                    <div class="col-sm-4 portfolio-item">
-                        <a href="#portfolioModal<%= portfolio.id %>" class="portfolio-link" data-toggle="modal" onClick="setTimeout(function(){$('.modal-backdrop').remove();}, 300)">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <%= image_tag portfolio_image(portfolio), class: "img-responsive" %>
-                        </a>
-                    </div>
-                <% end %>
-            <% end %>
-        </div>
+        <% end %>
+      </div>
     </div>
-  <div class="text-center portfolio-add paddtop">
-    <%= link_to "<i class='fa fa-fw'></i>Add More".html_safe, new_profile_portfolio_path(@profile) %>
-  </div>
-</section>
-<% if portfolios.present? %>
-    <% portfolios.each do |portfolio| %>
-        <div class="portfolio-modal modal fade" id="portfolioModal<%= portfolio.id %>" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2><%= portfolio.title %></h2>
-                                <hr class="star-primary">
-                                <%= image_tag portfolio_image(portfolio), class: "img-responsive img-centered" %>
-                                <p><%= portfolio.description %></p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong><a href="http://startbootstrap.com"><%= portfolio.client %></a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong><a href="http://startbootstrap.com"><%= portfolio.start_date %></a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong><a href="http://startbootstrap.com"><%= portfolio.services %></a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="text-center portfolio-add paddtop">
+      <%= link_to "<i class='fa fa-fw'></i>Add More".html_safe, new_profile_portfolio_path(@profile) %>
+    </div>
+  </section>
+  <% if portfolios.present? %>
+  <% portfolios.each do |portfolio| %>
+  <div class="portfolio-modal modal fade" id="portfolioModal<%= portfolio.id %>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl">
+          </div>
         </div>
-    <% end %>
-<% end %>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="modal-body">
+              <h2><%= portfolio.title %></h2>
+              <hr class="star-primary">
+              <%= image_tag portfolio_image(portfolio), class: "img-responsive img-centered" %>
+              <p><%= portfolio.description %></p>
+              <ul class="list-inline item-details">
+                <li>Client:
+                  <strong><a href="http://startbootstrap.com"><%= portfolio.client %></a>
+                  </strong>
+                </li>
+                <li>Date:
+                  <strong><a href="http://startbootstrap.com"><%= portfolio.start_date %></a>
+                  </strong>
+                </li>
+                <li>Service:
+                  <strong><a href="http://startbootstrap.com"><%= portfolio.services %></a>
+                  </strong>
+                </li>
+              </ul>
+              <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
