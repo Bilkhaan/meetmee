@@ -5,7 +5,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_one :profile
 
+  after_create :initiate_profile
+
   def user_name
     self.profile.present? ? self.profile.user_name : 'bilkhan'
+  end
+
+  private
+
+  def initiate_profile
+    self.build_profile
+    self.save
   end
 end
