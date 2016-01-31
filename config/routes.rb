@@ -14,7 +14,7 @@ Meetmee::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#dashboard'
-  get '/people/:id' => 'home#dashboard', as: "dashboard_home"
+  get '/people/:id' => 'home#user_profile', as: "dashboard_home"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
