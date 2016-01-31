@@ -1,46 +1,41 @@
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#page-top">meet mee</a>
-            </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#page-top">meet mee</a>
+    </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <% unless from == "loginForm" || from == "edit" %>
-                        <li class="hidden">
-                            <a href="#page-top"></a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="#portfolio">Portfolio</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="#about">About</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="#contact">Contact</a>
-                        </li>
-                    <% end %>
-                    <li class="page-scroll">
-                       <%= link_to "Login", new_user_session_path() unless current_user.present? || from == "edit" %>
-                       <%= link_to "Log-out", destroy_user_session_path(), method: "delete" if current_user.present? %>
-                    </li>
-                    <li class="page-scroll">
-                        <%= link_to "Join", new_user_registration_path() unless current_user.present? || from == "edit" %>
-                        <%= link_to "edit", edit_profile_path(current_user.profile) if current_user.present? && from != "edit" %>
-                        <%= link_to "Me", root_url if from == "edit" %>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% unless from == "loginForm" || from == "edit" %>
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li class="page-scroll">
+            <a href="#portfolio">Portfolio</a>
+          </li>
+          <li class="page-scroll">
+            <a href="#about">About</a>
+          </li>
+          <li class="page-scroll">
+            <a href="#contact">Contact</a>
+          </li>
+        <% end %>
+        <li class="page-scroll">
+          <%= link_to "Login", new_user_session_path() unless current_user.present? || from == "edit" %>
+          <%= link_to "Log-out", destroy_user_session_path(), method: "delete" if current_user.present? %>
+        </li>
+        <li class="page-scroll">
+          <%= link_to "Join", new_user_registration_path() unless current_user.present? || from == "edit" %>
+          <%= link_to "edit", edit_profile_path(current_user.profile) if current_user.present? && from != "edit" && from != "people" %>
+          <%= link_to "Me", root_url if current_user.present? && (from == "edit" || from == "people") %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

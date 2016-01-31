@@ -1,5 +1,6 @@
 module ApplicationHelper
   def set_referrer(params)
+    return "people" if params[:action] == 'dashboard' && params[:id].present?
     return "edit" if params[:controller].in? ["profiles", "portfolios"]
     return "loginForm" if params[:controller].in? ["devise/registrations", "devise/sessions"]
     return "viewProfile" if params[:controller] == "homes"

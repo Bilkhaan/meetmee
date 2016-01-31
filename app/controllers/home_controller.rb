@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:dashboard]
   before_action :set_profile, only: [:dashboard]
 
   def dashboard

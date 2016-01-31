@@ -59,6 +59,7 @@ class ProfilesController < ApplicationController
   private
     def set_profile
       @profile = Profile.find(params[:id])
+      redirect_to root_url, alert: 'You cannot update this profile' unless @profile.user == current_user
     end
 
     def profile_params

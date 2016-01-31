@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="text-center portfolio-add paddtop">
-      <%= link_to "<i class='fa fa-fw'></i>Add More".html_safe, new_profile_portfolio_path(@profile) %>
+      <%= link_to "<i class='fa fa-fw'></i>Add More".html_safe, new_profile_portfolio_path(@profile) if can_add_portfolio?(@profile)%>
     </div>
   </section>
   <% if portfolios.present? %>
