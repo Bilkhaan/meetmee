@@ -16,8 +16,7 @@ class HomeController < ApplicationController
 
   private
     def set_profile
-      name = params[:id] ? params[:id] : current_user.user_name
-      @profile = Profile.find_by_user_name(name)
-      redirect_to new_profile_path if @profile.blank?
+      @profile = params[:id].present? ? Profile.find_by_user_name(params[:id]) : current_user.profile
+      redirect_to  root_path, alert: 'Invalid url' if @profile.blank?
     end
 end
