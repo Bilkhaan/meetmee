@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def apply_container_class(params)
-    return "container clearfix margin-container" unless params[:action] == "dashboard"
+    return "container clearfix margin-container" unless params[:action].in?(["dashboard", "user_profile"])
   end
 
   def flash_class(flash_type)
